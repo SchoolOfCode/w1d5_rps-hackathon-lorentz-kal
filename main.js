@@ -127,11 +127,23 @@ let playerLoss = 0;
 let playerDraw = 0;
 let roundNumber = 0;
 
+let userName;
 let playerMove;
 let computerMove;
 let keepLooping = true;
+let maxChars = 10;
 
-while (keepLooping === true) {
+while (userName === undefined) {
+userName = prompt("What is your name?");
+
+if(userName.length > 10) {
+  alert("Username character limit - 10!");
+  userName = undefined;
+}
+}
+
+while (keepLooping === true && userName) {
+  
   playerMove = prompt("What is your move?");
 
   function scores() {
@@ -146,24 +158,24 @@ while (keepLooping === true) {
     if (playerMove === computerMove) {
       roundNumber++;
       playerDraw++;
-      return alert("you drew " + scores());
+      return alert("Hey " + userName + ", you drew!\n" + scores());
     } else {
       if (playerMove === "rock" && computerMove === "scissors") {
         roundNumber++;
         playerWin++;
-        return alert("you win " + scores());
+        return alert("Hey " + userName + ", you win!\n" + scores());
       } else if (playerMove === "paper" && computerMove === "rock") {
         roundNumber++;
         playerWin++;
-        return alert("you win " + scores());
+        return alert("Hey " + userName + ", you win!\n" + scores());
       } else if (playerMove === "scissors" && computerMove === "paper") {
         roundNumber++;
         playerWin++;
-        return alert("you win " + scores());
+        return alert("Hey " + userName + ", you win!\n" + scores());
       } else {
         roundNumber++;
         playerLoss++;
-        return alert("you lost " + scores());
+        return alert("Hey " + userName + ", you lost!\n" + scores());
       }
     }
   }
