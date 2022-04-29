@@ -1,3 +1,4 @@
+// Task 1
 // hard code player and pc moves
 /*
 A set of if statements for each possible combination
@@ -25,3 +26,25 @@ if (playerMove === computerMove) {
     console.log("You lose");
   }
 }
+// Task 2
+// Put if statements into a function with the variables now as Parameters. 
+// Return 1, 0 and -1
+
+
+function getWinner(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+  return 0;
+} else {
+  if (playerMove === "rock" && computerMove === "scissors") {
+    return 1;
+  } else if (playerMove === "paper" && computerMove === "rock") {
+    return 1;
+  } else if (playerMove === "scissors" && computerMove === "paper") {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+}
+
+let result = getWinner("rock", "paper");
