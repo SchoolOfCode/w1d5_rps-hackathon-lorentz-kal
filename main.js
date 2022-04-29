@@ -10,28 +10,27 @@ paper wins (else pc wins)
 scissors wins (else pc wins)
 */
 
-let playerMove = "scissors";
-let computerMove = "scissors";
+let playerMove;
+let computerMove;
 
-if (playerMove === computerMove) {
-  console.log("it's a draw");
-} else {
-  if (playerMove === "rock" && computerMove === "scissors") {
-    console.log("You win");
-  } else if (playerMove === "paper" && computerMove === "rock") {
-    console.log("You win");
-  } else if (playerMove === "scissors" && computerMove === "paper") {
-    console.log("You win");
-  } else {
-    console.log("You lose");
-  }
-}
+// if (playerMove === computerMove) {
+//   console.log("it's a draw");
+// } else {
+//   if (playerMove === "rock" && computerMove === "scissors") {
+//     console.log("You win");
+//   } else if (playerMove === "paper" && computerMove === "rock") {
+//     console.log("You win");
+//   } else if (playerMove === "scissors" && computerMove === "paper") {
+//     console.log("You win");
+//   } else {
+//     console.log("You lose");
+//   }
+// }
 // Task 2
-// Put if statements into a function with the variables now as Parameters. 
+// Put if statements into a function with the variables now as Parameters.
 // Return 1, 0 and -1
 
-
-function getWinner(playerMove, computerMove) {
+/* function getWinner(playerMove, computerMove) {
   if (playerMove === computerMove) {
   return 0;
 } else {
@@ -47,4 +46,34 @@ function getWinner(playerMove, computerMove) {
 }
 }
 
-let result = getWinner("rock", "paper");
+let result = getWinner("rock", "paper"); */
+
+// Task 3
+
+/*
+Assign the value of prompt to the playerMove variable
+Call the function with said value
+Using alert - display the result
+*/
+
+playerMove = prompt("What is your move?");
+console.log(playerMove);
+
+function getWinner(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+    return alert("0");
+  } else {
+    if (playerMove === "rock" && computerMove === "scissors") {
+      return alert("1");
+    } else if (playerMove === "paper" && computerMove === "rock") {
+      return alert("1");
+    } else if (playerMove === "scissors" && computerMove === "paper") {
+      return alert("1");
+    } else {
+      return alert("-1");
+    }
+  }
+}
+
+// We're testing the result values
+let result = getWinner(playerMove, "scissors");
