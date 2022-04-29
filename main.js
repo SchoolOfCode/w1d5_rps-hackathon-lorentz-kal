@@ -122,6 +122,13 @@ The getWinner function should also increment the new variables.
 
 */
 
+/*
+Bonus Task 1
+Take userName string value
+Apply appropriate string method which can identify the first character.
+If the first character has a letter it is valid otherwise it's not valid.
+*/
+
 let playerWin = 0;
 let playerLoss = 0;
 let playerDraw = 0;
@@ -134,66 +141,71 @@ let keepLooping = true;
 let maxChars = 10;
 
 while (userName === undefined) {
-userName = prompt("What is your name?");
+  userName = prompt("What is your name?");
 
-if(userName.length > 10) {
-  alert("Username character limit - 10!");
-  userName = undefined;
-}
-}
+  if (userName.length > 10) {
+    alert("Username character limit - 10!");
+    userName = undefined;
+  }
+  if (userName.charAt(0).match(/[a-zA-Z]+/)) {
+    console.log("Username is valid");
+  } else {
+    console.log("Username not valid");
+    userName = undefined;
+  }
 
-while (keepLooping === true && userName) {
-  
-  playerMove = prompt("What is your move?");
+  while (keepLooping === true && userName) {
+    playerMove = prompt("What is your move?");
 
-  function scores() {
-    return `Win count: ${playerWin}
+    function scores() {
+      return `Win count: ${playerWin}
   Loss count: ${playerLoss}
   Draw count: ${playerDraw}
   Number of Rounds: ${roundNumber}
   `;
-  }
+    }
 
-  function getWinner(playerMove, computerMove) {
-    if (playerMove === computerMove) {
-      roundNumber++;
-      playerDraw++;
-      return alert("Hey " + userName + ", you drew!\n" + scores());
-    } else {
-      if (playerMove === "rock" && computerMove === "scissors") {
+    function getWinner(playerMove, computerMove) {
+      if (playerMove === computerMove) {
         roundNumber++;
-        playerWin++;
-        return alert("Hey " + userName + ", you win!\n" + scores());
-      } else if (playerMove === "paper" && computerMove === "rock") {
-        roundNumber++;
-        playerWin++;
-        return alert("Hey " + userName + ", you win!\n" + scores());
-      } else if (playerMove === "scissors" && computerMove === "paper") {
-        roundNumber++;
-        playerWin++;
-        return alert("Hey " + userName + ", you win!\n" + scores());
+        playerDraw++;
+        return alert("Hey " + userName + ", you drew!\n" + scores());
       } else {
-        roundNumber++;
-        playerLoss++;
-        return alert("Hey " + userName + ", you lost!\n" + scores());
+        if (playerMove === "rock" && computerMove === "scissors") {
+          roundNumber++;
+          playerWin++;
+          return alert("Hey " + userName + ", you win!\n" + scores());
+        } else if (playerMove === "paper" && computerMove === "rock") {
+          roundNumber++;
+          playerWin++;
+          return alert("Hey " + userName + ", you win!\n" + scores());
+        } else if (playerMove === "scissors" && computerMove === "paper") {
+          roundNumber++;
+          playerWin++;
+          return alert("Hey " + userName + ", you win!\n" + scores());
+        } else {
+          roundNumber++;
+          playerLoss++;
+          return alert("Hey " + userName + ", you lost!\n" + scores());
+        }
       }
     }
-  }
 
-  // Computer move
+    // Computer move
 
-  function randomArray() {
-    let arr = ["rock", "paper", "scissors"];
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+    function randomArray() {
+      let arr = ["rock", "paper", "scissors"];
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
 
-  computerMove = randomArray();
+    computerMove = randomArray();
 
-  let result = getWinner(playerMove, computerMove);
+    let result = getWinner(playerMove, computerMove);
 
-  if (confirm("Do you want to play again?") == true) {
-    keepLooping = true;
-  } else {
-    keepLooping = false;
+    if (confirm("Do you want to play again?") == true) {
+      keepLooping = true;
+    } else {
+      keepLooping = false;
+    }
   }
 }
