@@ -132,6 +132,9 @@ If the first character has a letter it is valid otherwise it's not valid.
 // // Bonus Task 2
 // First letter of username should be capitalised.
 
+// Rock Paper Scissors!
+
+/* 
 let playerWin = 0;
 let playerLoss = 0;
 let playerDraw = 0;
@@ -169,8 +172,6 @@ while (keepLooping === true && userName) {
   `;
   }
 
-  // substantial change
-
   function getWinner(playerMove, computerMove) {
     if (playerMove === computerMove) {
       roundNumber++;
@@ -201,6 +202,100 @@ while (keepLooping === true && userName) {
 
   function randomArray() {
     let arr = ["rock", "paper", "scissors"];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  computerMove = randomArray();
+
+  let result = getWinner(playerMove, computerMove);
+
+  if (confirm("Do you want to play again?") == true) {
+    keepLooping = true;
+  } else {
+    keepLooping = false;
+  }
+}
+*/
+
+// ================================================
+
+// Rock Paper Scissors Lizard Spock
+
+let playerWin = 0;
+let playerLoss = 0;
+let playerDraw = 0;
+let roundNumber = 0;
+
+let userName;
+let playerMove;
+let computerMove;
+let keepLooping = true;
+let maxChars = 10;
+
+while (userName === undefined) {
+  userName = prompt("What is your name?");
+
+  if (userName.length > 10) {
+    alert("Username character limit - 10!");
+    userName = undefined;
+  }
+  if (userName.charAt(0).match(/[A-Z]+/)) {
+    console.log("Username is valid");
+  } else {
+    console.log("Username not valid");
+    alert("Username must start with capital letter!");
+    userName = undefined;
+  }
+}
+while (keepLooping === true && userName) {
+  playerMove = prompt("What is your move?");
+
+  function scores() {
+    return `Win count: ${playerWin}
+            Loss count: ${playerLoss}
+            Draw count: ${playerDraw}
+            Number of Rounds: ${roundNumber}
+  `;
+  }
+
+  function getWinner(playerMove, computerMove) {
+    if (playerMove === computerMove) {
+      roundNumber++;
+      playerDraw++;
+      return alert("Hey " + userName + ", you drew!\n" + scores());
+    } else {
+      if (playerMove === "rock" && computerMove === "scissors" || computerMove === "lizard") {
+        roundNumber++;
+        playerWin++;
+        return alert("Hey " + userName + ", you win!\n" + scores());
+      } else if (playerMove === "paper" && computerMove === "rock" || computerMove === "spock") {
+        roundNumber++;
+        playerWin++;
+        return alert("Hey " + userName + ", you win!\n" + scores());
+      } else if (playerMove === "scissors" && computerMove === "paper" || computerMove === 'lizard') {
+        roundNumber++;
+        playerWin++;
+        return alert("Hey " + userName + ", you win!\n" + scores());
+      } else if (playerMove === "lizard" && computerMove === "paper" || computerMove === 'spock') {
+        roundNumber++;
+        playerWin++;
+        return alert("Hey " + userName + ", you win!\n" + scores());
+      } else if (playerMove === "spock" && computerMove === "scissors" || computerMove === 'rock') {
+        roundNumber++;
+        playerWin++;
+        return alert("Hey " + userName + ", you win!\n" + scores());
+      } else {
+        roundNumber++;
+        playerLoss++;
+        return alert("Hey " + userName + ", you lost!\n" + scores());
+      }
+    }
+  }
+
+  // Computer move
+
+  function randomArray() {
+    let arr = ["rock", "paper", "scissors", "lizard", "spock"];
     return arr[Math.floor(Math.random() * arr.length)];
   }
 
