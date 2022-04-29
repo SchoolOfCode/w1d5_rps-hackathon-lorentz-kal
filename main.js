@@ -10,8 +10,8 @@ paper wins (else pc wins)
 scissors wins (else pc wins)
 */
 
-let playerMove;
-let computerMove;
+/* let playerMove;
+let computerMove; */
 
 // if (playerMove === computerMove) {
 //   console.log("it's a draw");
@@ -56,8 +56,55 @@ Call the function with said value
 Using alert - display the result
 */
 
-playerMove = prompt("What is your move?");
+/* playerMove = prompt("What is your move?");
 console.log(playerMove);
+
+function getWinner(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+    return alert("0");
+  } else {
+    if (playerMove === "rock" && computerMove === "scissors") {
+      return alert("1");
+    } else if (playerMove === "paper" && computerMove === "rock") {
+      return alert("1");
+    } else if (playerMove === "scissors" && computerMove === "paper") {
+      return alert("1");
+    } else {
+      return alert("-1");
+    }
+  }
+} */
+
+// We're testing the result values
+// let result = getWinner(playerMove, computerMove);
+
+// Task 4
+// Create a function that gives a random computer Selection.
+
+/* function randomArray() {
+  let arr = ["rock", "paper", "scissors"]
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+computerMove = randomArray();
+
+let result = getWinner(playerMove, computerMove); */
+
+// Task 5
+/*
+Set up a while loop
+Set up a confirm
+Player has option to stop playing after every round. 
+*/
+
+let playerMove;
+let computerMove;
+
+playerMove = prompt("What is your move?");
+
+while (confirm("do you want to play again") === true) {
+  playerMove = prompt("What is your move?");
+}
 
 function getWinner(playerMove, computerMove) {
   if (playerMove === computerMove) {
@@ -75,17 +122,16 @@ function getWinner(playerMove, computerMove) {
   }
 }
 
-// We're testing the result values
-// let result = getWinner(playerMove, computerMove);
-
-// Task 4
-// Create a function that gives a random computer Selection.
+// Computer move
 
 function randomArray() {
-  let arr = ["rock", "paper", "scissors"]
+  let arr = ["rock", "paper", "scissors"];
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 computerMove = randomArray();
 
 let result = getWinner(playerMove, computerMove);
+
+console.log(playerMove)
+
