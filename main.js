@@ -95,17 +95,19 @@ let result = getWinner(playerMove, computerMove); */
 Set up a while loop
 Set up a confirm
 Player has option to stop playing after every round. 
+Wrapping whole game in the while loop with prompt and confirm at the end of the loop - X
+Change condition of while loop to be playerMove === true. Confirm moved to the end of the loop. - game did not run, no alerts or prompts after initial move.
+
 */
 
 let playerMove;
 let computerMove;
+let keepLooping = true;
+
+while (keepLooping === true) {
 
 playerMove = prompt("What is your move?");
-
-while (confirm("do you want to play again") === true) {
-  playerMove = prompt("What is your move?");
-}
-
+  
 function getWinner(playerMove, computerMove) {
   if (playerMove === computerMove) {
     return alert("0");
@@ -133,5 +135,9 @@ computerMove = randomArray();
 
 let result = getWinner(playerMove, computerMove);
 
-console.log(playerMove)
-
+if (confirm("Do you want to play again?") == true) {
+  keepLooping = true;
+} else {
+  keepLooping = false;
+}
+}
