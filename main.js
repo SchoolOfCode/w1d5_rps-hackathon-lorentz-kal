@@ -100,44 +100,88 @@ Change condition of while loop to be playerMove === true. Confirm moved to the e
 
 */
 
+// Task 6
+/*
+Keep track of number of games
+Keep track of wins, losses and draws
+
+These variables keep track of scores
+
+playerWin
+playerLoss
+roundNumber
+playerDraw
+
+create an alert to display results at the end of each round
+
+Declare the variables at the beginning of the game
+
+We want to place a new function that counts the scores/num of games.. This function process should be before the getWinner function so that the get Winner function can refer to it in it's alert()
+
+The getWinner function should also increment the new variables.
+
+*/
+
+let playerWin = 0;
+let playerLoss = 0;
+let playerDraw = 0;
+let roundNumber = 0;
+
 let playerMove;
 let computerMove;
 let keepLooping = true;
 
 while (keepLooping === true) {
+  playerMove = prompt("What is your move?");
 
-playerMove = prompt("What is your move?");
-  
-function getWinner(playerMove, computerMove) {
-  if (playerMove === computerMove) {
-    return alert("0");
-  } else {
-    if (playerMove === "rock" && computerMove === "scissors") {
-      return alert("1");
-    } else if (playerMove === "paper" && computerMove === "rock") {
-      return alert("1");
-    } else if (playerMove === "scissors" && computerMove === "paper") {
-      return alert("1");
+  function scores() {
+    return `Win count: ${playerWin}
+  Loss count: ${playerLoss}
+  Draw count: ${playerDraw}
+  Number of Rounds: ${roundNumber}
+  `;
+  }
+
+  function getWinner(playerMove, computerMove) {
+    if (playerMove === computerMove) {
+      roundNumber++;
+      playerDraw++;
+      return alert("you drew " + scores());
     } else {
-      return alert("-1");
+      if (playerMove === "rock" && computerMove === "scissors") {
+        roundNumber++;
+        playerWin++;
+        return alert("you win " + scores());
+      } else if (playerMove === "paper" && computerMove === "rock") {
+        roundNumber++;
+        playerWin++;
+        return alert("you win " + scores());
+      } else if (playerMove === "scissors" && computerMove === "paper") {
+        roundNumber++;
+        playerWin++;
+        return alert("you win " + scores());
+      } else {
+        roundNumber++;
+        playerLoss++;
+        return alert("you lost " + scores());
+      }
     }
   }
-}
 
-// Computer move
+  // Computer move
 
-function randomArray() {
-  let arr = ["rock", "paper", "scissors"];
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+  function randomArray() {
+    let arr = ["rock", "paper", "scissors"];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
-computerMove = randomArray();
+  computerMove = randomArray();
 
-let result = getWinner(playerMove, computerMove);
+  let result = getWinner(playerMove, computerMove);
 
-if (confirm("Do you want to play again?") == true) {
-  keepLooping = true;
-} else {
-  keepLooping = false;
-}
+  if (confirm("Do you want to play again?") == true) {
+    keepLooping = true;
+  } else {
+    keepLooping = false;
+  }
 }
