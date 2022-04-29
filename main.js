@@ -129,6 +129,9 @@ Apply appropriate string method which can identify the first character.
 If the first character has a letter it is valid otherwise it's not valid.
 */
 
+// // Bonus Task 2
+// First letter of username should be capitalised.
+
 let playerWin = 0;
 let playerLoss = 0;
 let playerDraw = 0;
@@ -147,13 +150,16 @@ while (userName === undefined) {
     alert("Username character limit - 10!");
     userName = undefined;
   }
-  if (userName.charAt(0).match(/[a-zA-Z]+/)) {
+  if (userName.charAt(0).match(/[A-Z]+/)) {
     console.log("Username is valid");
-  } else {
+    
+  } 
+    else {
     console.log("Username not valid");
+    alert("Username must start with capital letter!");
     userName = undefined;
-  }
-
+      }
+    }
   while (keepLooping === true && userName) {
     playerMove = prompt("What is your move?");
 
@@ -208,4 +214,4 @@ while (userName === undefined) {
       keepLooping = false;
     }
   }
-}
+
