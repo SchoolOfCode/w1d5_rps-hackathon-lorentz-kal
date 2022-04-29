@@ -76,4 +76,16 @@ function getWinner(playerMove, computerMove) {
 }
 
 // We're testing the result values
-let result = getWinner(playerMove, "scissors");
+// let result = getWinner(playerMove, computerMove);
+
+// Task 4
+// Create a function that gives a random computer Selection.
+
+function randomArray() {
+  let arr = ["rock", "paper", "scissors"]
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+computerMove = randomArray();
+
+let result = getWinner(playerMove, computerMove);
